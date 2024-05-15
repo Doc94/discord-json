@@ -17,6 +17,8 @@ public interface InviteData {
         return ImmutableInviteData.builder();
     }
 
+    int type();
+
     String code();
 
     Possible<PartialGuildData> guild();
@@ -31,10 +33,8 @@ public interface InviteData {
     @JsonProperty("target_user")
     Possible<UserData> targetUser();
 
-    /* TODO
-     * @JsonProperty("target_application")
-     * Possible<?> targetApplication();
-     */
+    @JsonProperty("target_application")
+    Possible<ApplicationInfoData> targetApplication();
 
     @JsonProperty("approximate_presence_count")
     Possible<Integer> approximatePresenceCount();
@@ -47,6 +47,8 @@ public interface InviteData {
 
     @JsonProperty("guild_scheduled_event")
     Possible<GuildScheduledEventData> guildScheduledEvent();
+
+    // MetaData Extended below - https://discord.com/developers/docs/resources/invite#invite-metadata-object
 
     Possible<Integer> uses();
 
